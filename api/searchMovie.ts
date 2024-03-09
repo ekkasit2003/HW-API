@@ -1,7 +1,6 @@
 import express from "express";
 import { dbconn } from "../dbconnents";
-import { Movie } from "../model/all";
-import mysql from "mysql";
+
 
 export const router = express.Router();
 
@@ -34,8 +33,8 @@ router.get("/Search", (req, res) => {
             dbconn.query(sql2, [searchData], (err, result2) => {
                 if (err) throw err;
                 const result = {
-                    star: result1,
-                    creators: result2
+                    creators: result1,
+                    star: result2
                 };
                 res.status(201).json(result);
             });
